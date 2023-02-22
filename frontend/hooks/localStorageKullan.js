@@ -1,5 +1,7 @@
 // const localStorageKullan = (keyValue, baslangicDegeri) => {
-//   return <div></div>;
+//   const localDegerAta = localStorage.setItem(keyValue, baslangicDegeri);
+//   const localDeger = localStorage.getItem(keyValue);
+//   return [localDeger];
 // };
 
 // export default localStorageKullan;
