@@ -1,11 +1,12 @@
-import { useState } from "react";
-// import localStorageKullan from "./localStorageKullan";
+import useLocalStorageKullan from "./localStorageKullan";
 
-const geceModuAc = (initialValue) => {
-  const [geceModu, setGeceModu] = useState(initialValue);
-  const toggleDegis = () => setGeceModu(!geceModu);
+export const useGeceModuAc = (initialValue) => {
+  const [localModeDegeri, setLocalModeHandler] = useLocalStorageKullan(
+    "verilenKey",
+    initialValue
+  );
 
-  return [geceModu, toggleDegis];
+  return [localModeDegeri, setLocalModeHandler];
 };
 
-export default geceModuAc;
+export default useGeceModuAc;

@@ -1,7 +1,18 @@
-// const localStorageKullan = (keyValue, baslangicDegeri) => {
-//   const localDegerAta = localStorage.setItem(keyValue, baslangicDegeri);
-//   const localDeger = localStorage.getItem(keyValue);
-//   return [localDeger];
-// };
+import { useState } from "react";
 
-// export default localStorageKullan;
+const useLocalStorageKullan = (keyValue, initialValue) => {
+  const [localDeger, setLocalDeger] = useState(() => {
+    const item = localStorage.getItem(keyValue);
+    const initialVal = item ? JSON.parse(item) : initialValue;
+    localStorage.setItem(keyValue, JSON.stringify(initialVal));
+    return initialVal;
+  });
+
+  const clickHookHandler = () => {
+    setLocalDeger(!localDeger);
+    localStorage.setItem(keyValue, JSON.stringify(!localDeger));
+  };
+  return [localDeger, clickHookHandler];
+};
+
+export default useLocalStorageKullan;
